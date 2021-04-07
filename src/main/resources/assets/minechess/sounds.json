@@ -1,0 +1,18 @@
+{
+  "move": {
+    "category": "master",
+    "sounds": [ "minechess:move" ]
+  },
+  "castle": {
+    "category": "master",
+    "sounds": [ "minechess:castle" ]
+  },
+  "capture": {
+    "category": "master",
+    "sounds": [ "minechess:capture" ]
+  },
+  "check": {
+    "category": "master",
+    "sounds": [ "minechess:check" ]
+  }
+}
