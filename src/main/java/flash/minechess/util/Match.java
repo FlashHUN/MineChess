@@ -26,6 +26,8 @@ public class Match {
   private Board board;
   private UUID whitePlayer;
   private UUID blackPlayer;
+  private boolean resignWhite;
+  private boolean resignBlack;
 
   public Match(UUID whitePlayer, UUID blackPlayer) {
     this.board = new Board();
@@ -33,6 +35,8 @@ public class Match {
     this.gameResult = Result.Playing;
     this.whitePlayer = whitePlayer;
     this.blackPlayer = blackPlayer;
+    this.resignWhite = false;
+    this.resignBlack = false;
   }
 
   public UUID getWhitePlayer() {
@@ -45,6 +49,11 @@ public class Match {
 
   public Board getBoard() {
     return board;
+  }
+
+  public void resign(UUID resignedPlayer) {
+    resignWhite = resignedPlayer.equals(whitePlayer);
+    resignBlack = resignedPlayer.equals(blackPlayer);
   }
 
   public String getFen() {
@@ -105,6 +114,23 @@ public class Match {
     }
   }
 
+  public void notifyResign() {
+    gameResult = getGameState();
+    if (gameResult == Result.BlackResigned || gameResult == Result.WhiteResigned) {
+      PlayerList playerList = ServerLifecycleHooks.getCurrentServer().getPlayerList();
+      PlayerEntity white = playerList.getPlayerByUUID(whitePlayer);
+      PlayerEntity black = playerList.getPlayerByUUID(blackPlayer);
+      PlayerEntity won = gameResult == Result.WhiteResigned ? black : white;
+      white.playSound(SoundInit.CHECK.get(), 1f, 1f);
+      if (white != null && won != null) {
+        white.sendStatusMessage(new TranslationTextComponent(Main.getMessageName("result." + gameResult.name().toLowerCase()), won.getScoreboardName()), false);
+      }
+      if (black != null && won != null) {
+        black.sendStatusMessage(new TranslationTextComponent(Main.getMessageName("result." + gameResult.name().toLowerCase()), won.getScoreboardName()), false);
+      }
+    }
+  }
+
   public Result getGameState() {
     MoveGenerator moveGenerator = new MoveGenerator();
     List<Move> moves = moveGenerator.generateMoves(board);
@@ -122,6 +148,13 @@ public class Match {
       return Result.FiftyMoveRule;
     }
 
+    if (resignWhite) {
+      return Result.WhiteResigned;
+    }
+    if (resignBlack) {
+      return Result.BlackResigned;
+    }
+
     return Result.Playing;
   }
 
@@ -137,5 +170,5 @@ public class Match {
     return whitePlayer.equals(match.whitePlayer) && blackPlayer.equals(match.blackPlayer);
   }
 
-  public enum Result { Playing, BlackIsMated, WhiteIsMated, Stalemate, FiftyMoveRule }
+  public enum Result { Playing, BlackIsMated, WhiteIsMated, Stalemate, FiftyMoveRule, WhiteResigned, BlackResigned }
 }

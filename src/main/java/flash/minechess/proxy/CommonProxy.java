@@ -12,4 +12,6 @@ public class CommonProxy {
 
   public void syncMatch(UUID whitePlayer, UUID blackPlayer, String fen, int lastStartSquare, int lastTargetSquare) {}
 
+  public void resignMatch(UUID playerToResign) {}
+
 }

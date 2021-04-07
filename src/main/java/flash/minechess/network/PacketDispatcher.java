@@ -1,6 +1,7 @@
 package flash.minechess.network;
 
 import flash.minechess.main.Main;
+import flash.minechess.network.receive_client.PacketResignMatch;
 import flash.minechess.network.receive_client.PacketStartMatch;
 import flash.minechess.network.receive_client.PacketSyncMatch;
 import flash.minechess.network.receive_client.PacketUpdateClient;
@@ -34,6 +35,7 @@ public class PacketDispatcher {
     INSTANCE.registerMessage(nextID(), PacketStartMatch.class, PacketStartMatch::encode, PacketStartMatch::decode, PacketStartMatch::handle);
     INSTANCE.registerMessage(nextID(), PacketSyncMatch.class, PacketSyncMatch::encode, PacketSyncMatch::decode, PacketSyncMatch::handle);
     INSTANCE.registerMessage(nextID(), PacketUpdateMatch.class, PacketUpdateMatch::encode, PacketUpdateMatch::decode, PacketUpdateMatch::handle);
+    INSTANCE.registerMessage(nextID(), PacketResignMatch.class, PacketResignMatch::encode, PacketResignMatch::decode, PacketResignMatch::handle);
     INSTANCE.registerMessage(nextID(), PacketUpdateClient.class, PacketUpdateClient::encode, PacketUpdateClient::decode, PacketUpdateClient::handle);
   }
 

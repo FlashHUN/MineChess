@@ -4,6 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import flash.minechess.commands.ChallengeCommand;
 import flash.minechess.commands.Command;
+import flash.minechess.commands.ResignCommand;
 import flash.minechess.main.Main;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
@@ -15,9 +16,11 @@ import static net.minecraft.command.Commands.literal;
 public class CommandInit {
 
   public static ChallengeCommand CHALLENGE;
+  public static ResignCommand RESIGN;
 
   public static void registerCommands(CommandDispatcher<CommandSource> dispatcher, Commands.EnvironmentType env) {
     CHALLENGE = registerCommand(ChallengeCommand::new, dispatcher, env);
+    RESIGN = registerCommand(ResignCommand::new, dispatcher, env);
   }
 
   public static <T extends Command> T registerCommand(Supplier<T> supplier, CommandDispatcher<CommandSource> dispatcher, Commands.EnvironmentType env) {

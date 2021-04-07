@@ -13,7 +13,9 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import static flash.minechess.client.gui.screen.BoardScreen.blackColor;
 import static flash.minechess.client.gui.screen.BoardScreen.squareSize;
+import static flash.minechess.client.gui.screen.BoardScreen.whiteColor;
 import static flash.minechess.client.gui.screen.ColorPickerScreen.*;
 
 @OnlyIn(Dist.CLIENT)
@@ -55,7 +57,7 @@ public class ColorSquareWidget extends Button {
     if (pieceType != 0) {
       Minecraft minecraft = Minecraft.getInstance();
       minecraft.getTextureManager().bindTexture(PIECES);
-      int colorHEX = pieceColor == Piece.White ? whiteColor : ScreenHelper.colorLightness(blackColor, 40);
+      int colorHEX = pieceColor == Piece.White ? ScreenHelper.colorLightness(whiteColor, 30) : ScreenHelper.colorLightness(blackColor, 30);
       int r = (colorHEX & 0xFF0000) >> 16;
       int g = (colorHEX & 0xFF00) >> 8;
       int b = colorHEX & 0xFF;

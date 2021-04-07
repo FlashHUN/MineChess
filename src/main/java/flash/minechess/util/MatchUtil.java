@@ -51,6 +51,7 @@ public class MatchUtil {
     for (int i = 0; i < matchList.size(); i++) {
       Match match = matchList.get(i);
       if (match.getWhitePlayer().equals(whitePlayer) && match.getBlackPlayer().equals(blackPlayer)) {
+        Main.LOGGER.debug("GameState: " + match.getGameState().name());
         if (match.getGameState() != Match.Result.Playing) {
           matchIndex = i;
         }

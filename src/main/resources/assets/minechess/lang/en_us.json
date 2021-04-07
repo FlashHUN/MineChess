@@ -6,6 +6,8 @@
   "screen.minechess.result.playing": "PLAYING",
   "screen.minechess.result.blackismated": "CHECKMATE! WHITE WON",
   "screen.minechess.result.whiteismated": "CHECKMATE! BLACK WON",
+  "screen.minechess.result.whiteresigned": "WHITE RESIGNED! BLACK WON",
+  "screen.minechess.result.blackresigned": "BLACK RESIGNED! WHITE WON",
   "screen.minechess.result.stalemate": "STALEMATE",
   "screen.minechess.result.fiftymoverule": "DRAW",
   "screen.minechess.turn.self": "Your turn",
@@ -27,6 +29,8 @@
   "msg.minechess.challenge.sent": "[MineChess] Sent challenge request to %s!",
   "msg.minechess.result.blackismated": "[MineChess] Match ended in Checkmate! %s won",
   "msg.minechess.result.whiteismated": "[MineChess] Match ended in Checkmate! %s won",
+  "msg.minechess.result.blackresigned": "[MineChess] Match ended in Resign! %s won",
+  "msg.minechess.result.whiteresigned": "[MineChess] Match ended in Resign! %s won",
   "msg.minechess.result.stalemate": "[MineChess] Match ended in Stalemate!",
   "msg.minechess.result.fiftymoverule": "[MineChess] Match ended in Draw!",
   "msg.minechess.opponent": "Opponent"

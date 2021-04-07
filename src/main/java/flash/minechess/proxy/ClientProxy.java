@@ -44,4 +44,14 @@ public class ClientProxy extends CommonProxy {
     }
   }
 
+  public void resignMatch(UUID playerToResign) {
+    Match match = MatchUtil.findMatch(playerToResign);
+    if (match != null) {
+      match.resign(playerToResign);
+      if (match.getGameState() != Match.Result.Playing) {
+        MatchUtil.finishMatch(match.getWhitePlayer(), match.getBlackPlayer());
+      }
+    }
+  }
+
 }
