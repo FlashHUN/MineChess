@@ -1,9 +1,9 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[35,)"
 license="GNU GPLv3"
 [[mods]]
 modId="minechess"
-version="1.0"
+version="1.0.1"
 displayName="MineChess"
 credits="Sebastian Lague (https://github.com/SebLague)"
 authors="Flash (https://github.com/FlashHUN)"
@@ -13,12 +13,12 @@ Chess in Minecraft!
 [[dependencies.minechess]]
    modId="forge"
    mandatory=true
-   versionRange="[36,)"
+   versionRange="[35,)"
    ordering="NONE"
    side="BOTH"
 [[dependencies.minechess]]
    modId="minecraft"
    mandatory=true
-   versionRange="[1.16.5,1.17)"
+   versionRange="[1.16.4,1.17)"
    ordering="NONE"
    side="BOTH"

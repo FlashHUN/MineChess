@@ -50,7 +50,8 @@ public class BoardScreen extends Screen {
 
       matrixStack.translate(squareSize/2, -12, 0);
       for (int file = 0; file < 8; file++) {
-        drawCenteredString(matrixStack, font, String.valueOf(BoardRepresentation.fileNames.charAt(file)), squareSize * file, 0, whiteColor);
+        int cFile = isWhitePlayer ? file : 7-file;
+        drawCenteredString(matrixStack, font, String.valueOf(BoardRepresentation.fileNames.charAt(cFile)), squareSize * file, 0, whiteColor);
       }
       matrixStack.translate(-squareSize/2-12, 18, 0);
       for(int rank = 7; rank >= 0; rank--) {
